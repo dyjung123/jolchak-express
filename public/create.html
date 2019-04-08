@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="email" id="email">
+        <input type="password" placeholder="password" id="password">
+        <input type="text" placeholder="name" id="name">
+        <button class="requestBtn">Submit</button>
+    </form>
+    <form>
+        <input type="text" id="delnum">
+        <button class="requestBtn2"></button>
+    </form>
+    <form>
+        <input type="text" id="lemail">
+        <input type="text" id="lpassword">
+        <button class="requestBtn3"></button>
+    </form>
+    <script>
+        var requestBtn = document.querySelector('.requestBtn')
+        var requestBtn2 = document.querySelector('.requestBtn2')
+        var requestBtn3 = document.querySelector('.requestBtn3')
+
+        requestBtn.addEventListener('click',(e)=>{
+            e.preventDefault() // requestBtn의 기본 기능 제거
+            requestAPI()
+        })
+        requestBtn2.addEventListener('click',(e)=>{
+            e.preventDefault() // requestBtn의 기본 기능 제거
+            requestAPI2()
+        })
+        requestBtn3.addEventListener('click',(e)=>{
+            e.preventDefault() // requestBtn의 기본 기능 제거
+            requestAPI3()
+        })
+
+        function requestAPI3() {
+            var email = $('#lemail').val()
+            var password = $('#lpassword').val()
+
+            var queryData = {email,password}
+
+            $.ajax({
+                url:'./user/login',
+                type:'post',
+                success:function(data){
+                    localStorage.setItem("jwt", data.accessToken); // localStorage에 jwt로 토큰저장
+                },
+                data: queryData
+            })
+        }
+
+        function requestAPI2() {
+            var delnum = $('#delnum').val()
+            var queryData = {idnum:delnum}
+
+            $.ajax({
+                url:'./user/delete',
+                type:'DELETE',
+                success:function(data){
+                    console.log('success')
+                },
+                data: queryData
+            })
+        }
+
+        function requestAPI() {
+            const id = $('#email').val()
+            const password = $('#password').val()
+            const name = $('#name').val()
+            const queryData = {
+                userid:id,
+                username:name,
+                userpassword:password
+            }
+            console.log(queryData)
+            //const createJson = {id, password, name, createJson}
+
+            alert($('form').serializeArray())
+            $.ajax({
+                url: './user/create',
+                type: 'post',
+                data: queryData,
+                success:function(data){
+                    console.log("success")
+                }
+            })
+        }
+    </script>
+</body>
+</html>

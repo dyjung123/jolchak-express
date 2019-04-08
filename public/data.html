@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>test image data</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="imageId">
+        <input type="text" placeholder="emotionData">
+        <button class="reqBtn">Submit</button>
+    </form>
+    <script>
+        var reqBtn = document.querySelector('.reqBtn')
+        reqBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            reqAPI()
+        })
+
+        function reqAPI() {
+            
+        }
+    </script>
+</body>
+</html>
