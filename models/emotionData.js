@@ -6,7 +6,7 @@ const EmotionData = skima.define('emotionData', {
         notNull : true
     },
     imageId: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING, // if Id length is too long, you must use TEXT type
         notNull : true,
         primaryKey : true,
     },
@@ -50,37 +50,9 @@ const EmotionData = skima.define('emotionData', {
         type: Sequelize.STRING,
         notNull : true
     },
-    avghappy: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgsad: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgangry: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgcalm: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgdisgusted: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgsurprised: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgconfused: {
-        type: Sequelize.FLOAT,
-        notNull : false
-    },
-    avgconfidence: {
-        type: Sequelize.FLOAT,
-        notNull: false
+    emotype: {
+        type: Sequelize.STRING,
+        notNull : true
     }},
     {tableName: 'emotionData'
 })
